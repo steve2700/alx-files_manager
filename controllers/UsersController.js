@@ -56,17 +56,16 @@ class UsersController {
       const idObject = new ObjectID(userId);
       const user = await users.findOne({ _id: idObject });
 
-      if (user) {
-        response.status(200).json({ id: userId, email: user.email });
-      } else {
-        response.status(401).json({ error: 'Unauthorized' });
+      if (!user) {
+        return response.status(401).json({ error: 'Unauthorized' });
       }
+
+      response.status(200).json({ id: userId, email: user.email });
     } catch (error) {
       console.error('Error fetching user details:', error);
       response.status(500).json({ error: 'Internal Server Error' });
     }
   }
 }
-
 
 export default UsersController;

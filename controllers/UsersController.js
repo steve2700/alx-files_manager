@@ -29,30 +29,8 @@ class UsersController {
 
       return res.status(201).json(responseUser);
     } catch (error) {
-      console.error('Error creating user:', error);
-      return res.status(500).json({ error: 'Internal Server Error' });
-    }
-  }
-
-  static async getMe(req, res) {
-    const sessionToken = req.header('X-Token');
-
-    try {
-      const user = await getUserBySessionToken(sessionToken);
-
-      if (!user) {
-        return res.status(401).json({ error: 'Unauthorized' });
-      }
-
-      const responseUser = {
-        id: user._id,
-        email: user.email,
-      };
-
-      return res.status(200).json(responseUser);
-    } catch (error) {
-      console.error('Error fetching user details:', error);
-      return res.status(500).json({ error: 'Internal Server Error' });
+        console.error('Error creating user:', error);
+        return res.status(500).json({ error: 'Internal Server Error' });
     }
   }
 }

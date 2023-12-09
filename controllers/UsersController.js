@@ -39,6 +39,9 @@ class UsersController {
       console.error('Error creating user:', error);
       response.status(500).json({ error: 'Internal Server Error' });
     }
+
+    // Add a consistent return statement to pass ESlint error
+    return null;
   }
 
   static async getMe(request, response) {
@@ -65,6 +68,9 @@ class UsersController {
       console.error('Error fetching user details:', error);
       response.status(500).json({ error: 'Internal Server Error' });
     }
+
+    // Add a consistent return statement to pass ESlint error
+    return null;
   }
 }
 
